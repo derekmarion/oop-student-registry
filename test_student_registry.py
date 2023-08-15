@@ -24,17 +24,17 @@ def test_student_grade_setter():
 
 def test_invalid_name_setter():
     student = Student("Alice")
-    with pytest.raises(TypeError):
-        student.set_name = 123
+    student.set_name = 123
+    assert student.get_name == "Alice"
 
 def test_invalid_age_setter():
     student = Student("Alice")
-    with pytest.raises(TypeError):
-        student.set_age = "invalid"
+    student.set_age = "invalid"
+    assert student.get_age == 13
 
 def test_invalid_grade_setter():
     student = Student("Alice")
-    with pytest.raises(TypeError):
-        student.set_grade = "13th"
+    student.set_grade = "13th"
+    assert student.get_grade == "12th"
 
 # Write tests for Class methods
