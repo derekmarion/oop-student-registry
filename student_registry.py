@@ -41,11 +41,12 @@ class Student:
         else:
             print("Grade must be formatted as between 9th and 12th grade")
 
-    def __str__(self) -> str:
-        return f"Name: {get_name()}\nAge: {get_age()}\nGrade: {get_grade()}"
+    def __str__(self):
+        return f"Name: {self._name}\nAge: {self._age}\nGrade: {self._grade}"
     
-    def advance(self, years_advanced):
-        set_grade(years_advanced)
+    def advance(self, years_advanced: int):
+        years_advanced = str(int(years_advanced) + int(re.sub(r'[th]', "", self._grade))) + "th"
+        self._grade = years_advanced
 
     def study(self, subject):
         return f"{self._name} is studying {subject}"

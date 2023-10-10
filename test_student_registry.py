@@ -38,3 +38,19 @@ def test_invalid_grade_setter():
     assert student.get_grade == "12th"
 
 # Write tests for Class methods
+
+def test_print_student(capsys): #note that when testing __str__ method you have to compare to stdout with capsys
+    student = Student("Jimmy")
+    print(student)
+    captured = capsys.readouterr()
+    expected_output = "Name: Jimmy\nAge: 13\nGrade: 12th\n"
+    assert captured.out == expected_output
+
+def test_subject():
+    student = Student("Jimmy")
+    assert student.study("Computer Science") == "Jimmy is studying Computer Science"
+
+def test_advance():
+    student = Student("Jimmy", 15, "10th")
+    student.advance(1)
+    assert student.get_grade == "11th"
